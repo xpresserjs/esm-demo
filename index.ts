@@ -9,8 +9,15 @@ const $ = await init({
     },
 });
 
-// Register commands file.
+
+/**
+ * Register Commands Demo
+ * This is a demo of how to register commands.
+ * You can add command from a command file or a command function.
+ * running `npx ts-node-esm index.ts cli` will show you the commands.
+ */
 $.on.consoleInit$(async function RegisterCommands() {
+    // Get the cli engine
     const cli = $.engine(CliEngine);
 
     // Add commands from file.
