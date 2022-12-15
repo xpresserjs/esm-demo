@@ -1,0 +1,1 @@
+import "@xpresser/framework/modules/console/ConsoleModule";
