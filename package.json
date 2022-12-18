@@ -12,7 +12,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@xpresser/framework": "^0.0.18"
+        "@xpresser/framework": "^0.0.19"
     },
     "devDependencies": {
         "@types/node": "^18.0.6",
