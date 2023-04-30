@@ -1,9 +1,9 @@
 {
-    "extends": "@xpresser/framework/tsconfig.json",
+    "extends": "./node_modules/@xpresser/framework/tsconfig.json",
     "compilerOptions": {
         "outDir": "./build",
         "types": [
-            "./xpresser"
+            "./xpresser.d.ts"
         ]
     },
     "exclude": [
