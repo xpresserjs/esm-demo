@@ -6,14 +6,15 @@
     "scripts": {
         "dev": "npx nodemon index.ts",
         "start": "npx ts-node-esm index.ts",
+        "build": "npx tsc",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "@xpresser/express-module": "^0.0.9",
-        "@xpresser/framework": "^0.0.27"
+        "@xpresser/express-module": "^0.0.11",
+        "@xpresser/framework": "^0.0.29"
     },
     "devDependencies": {
         "@types/node": "^18.16.3",

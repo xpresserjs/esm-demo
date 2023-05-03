@@ -1,18 +1,25 @@
-import { CliEngine, init, __dirname } from "@xpresser/framework";
-import { InitializeExpress } from "@xpresser/express-module";
+import {__dirname, CliEngine, init} from "@xpresser/framework";
+import {InitializeExpress} from "@xpresser/express-module";
+import MyConsoleModule from "./backend/MyConsoleModule.js";
+
+
 
 // Initialize xpresser
 const $ = await init({
-  name: "FireShip.io App",
-  env: "development",
-  paths: {
-    // Set the root path to the current directory
-    base: __dirname(import.meta.url),
-  },
+    name: "FireShip.io App",
+    env: "development",
+    paths: {
+        // Set the root path to the current directory
+        base: __dirname(import.meta.url),
+    },
 });
+
+// add another console module
+await $.modules.register(MyConsoleModule);
 
 // register express server module
 await InitializeExpress($);
+
 
 /**
  * Register Commands Demo
@@ -21,21 +28,25 @@ await InitializeExpress($);
  * running `npx ts-node-esm index.ts cli` will show you the commands.
  */
 $.on.consoleInit$(async function RegisterCommands() {
-  // Get the cli engine
-  const cli = $.engine(CliEngine);
 
-  // Add "inline" custom command
-  cli.addCommand("inline", {
-    description: "Inline Command",
-    args: { name: true },
-    action: ({ args, $ }) => {
-      $.console.log("Inline Command:", args);
-    },
-  });
+    if ($.modules.isActive("cli")) {
+        // Get the cli engine
+        const cli = $.engine(CliEngine);
 
-  // Add commands from file.
-  await cli.addCommandFile("backend/commands.js");
+        // Add "inline" custom command
+        cli.addCommand("inline", {
+            description: "Inline Command",
+            args: {name: true},
+            action: ({args, $}) => {
+                $.console.log("Inline Command:", args);
+            },
+        });
+
+        // Add commands from file.
+        await cli.addCommandFile("base://backend/commands.js");
+    }
+
 });
 
 // Start xpresser
-$.start();
+$.start().catch($.console.logError);

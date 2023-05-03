@@ -1,0 +1,3 @@
+#!/bin/bash
+# xjs Bash File.
+npx ts-node-esm index.ts $@
