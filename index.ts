@@ -8,17 +8,38 @@ import MyConsoleModule from "./backend/MyConsoleModule.js";
 const $ = await init({
     name: "FireShip.io App",
     env: "development",
+    debug: {
+        bootCycle: {
+            irrelevantNextError: true,
+        }
+    },
     paths: {
         // Set the root path to the current directory
         base: __dirname(import.meta.url),
     },
 });
 
-// add another console module
+/**
+ * Example on how to add a custom module.
+ * This module is a copy of the default console module.
+ */
 await $.modules.register(MyConsoleModule);
 
 // register express server module
-await InitializeExpress($);
+const server = await InitializeExpress($);
+
+/**
+ * Register Routes on `expressInit`
+ * server.app is only available on or after the `expressInit` event.
+ */
+$.on.expressInit$(function RegisterRoutes() {
+    const {app} = server;
+
+    app.get("/", (req, res) => {
+        return "Hello World!"
+    });
+});
+
 
 
 /**

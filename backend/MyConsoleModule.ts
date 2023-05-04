@@ -1,9 +1,7 @@
+import {BootCycleFunction, CliEngine, importDefault} from "@xpresser/framework";
 import ConsoleModule from "@xpresser/framework/modules/console/ConsoleModule.js";
 import type {BaseModuleConfig} from "@xpresser/framework/modules/BaseModule.js";
-// import type {Xpresser} from "@xpresser/framework";
-import {CliEngine} from "@xpresser/framework";
-import {importDefault} from "@xpresser/framework/functions/module.js";
-import {BootCycleFunction} from "@xpresser/framework/engines/BootCycleEngine.js";
+
 
 class MyConsoleModule extends ConsoleModule {
     // configure module
@@ -20,7 +18,7 @@ class MyConsoleModule extends ConsoleModule {
     }
 
     // add default commands
-    async addDefaultCommands() {
+    async #addDefaultCommands() {
         const defaultCommands = await importDefault(() => import("@xpresser/framework/modules/console/commands/default.js"))
 
         // add only the .ls command
@@ -38,10 +36,13 @@ class MyConsoleModule extends ConsoleModule {
             addDefaultCommands: false,
         }
 
-        this.$.on.consoleInit$(BootCycleFunction("MyConsoleModule", async () => {
+        this.$.on.consoleInit$(BootCycleFunction( async () => {
             // add default commands
-            await this.addDefaultCommands();
-        }));
+            await this.#addDefaultCommands();
+
+        }, MyConsoleModule.prependName("AddDefaultCommands")));
+
+
 
         // return super.init() to continue initialization.
         return super.init();
