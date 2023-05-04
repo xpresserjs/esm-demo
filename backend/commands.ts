@@ -1,10 +1,20 @@
 import { defineCommands } from "@xpresser/framework";
 
 export default defineCommands({
-  custom: {
-    description: "Display a custom command",
-    action: ({ args, $ }) => {
-      $.console.log("Custom Command:", args);
-    },
-  },
+  isGitPod: {
+    description: "Check if we are currently in gitpod servers",
+    action: ({$}) => {
+
+      // check if any env key has the key word gitpod
+      for(const [key] of Object.entries(process.env)){
+        if(key.toLowerCase().includes("gitpod")){
+          $.console.logSuccess("This is a GitPod enviroment.");
+          return
+        }
+      }
+
+      $.console.logError("No GitPod enviroment found!!");
+      $.console.spacing();
+    }
+  }
 });
