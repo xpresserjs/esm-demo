@@ -35,7 +35,7 @@ const server = await InitializeExpress($);
 $.on.expressInit$(function RegisterRoutes() {
     const {app} = server;
 
-    app.get("/", (req, res) => {
+    app.get("/", () => {
         return "Hello World!"
     });
 });
