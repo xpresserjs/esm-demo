@@ -1,20 +1,46 @@
-import { defineCommands } from "@xpresser/framework";
+import { defineCommands, __filename } from "@xpresser/framework";
 
+// Get current file path.
+const filename = __filename(import.meta.url);
+
+/**
+ * Define Commands
+ * `key` is the command name.
+ * `value` is the command options.
+ */
 export default defineCommands({
-  isGitPod: {
-    description: "Check if we are currently in gitpod servers",
-    action: ({$}) => {
+    sample1: {
+        /**
+         * Description of command
+         * This will show in the commands list.
+         */
+        description: "Example command from file",
 
-      // check if any env key has the key word gitpod
-      for(const [key] of Object.entries(process.env)){
-        if(key.toLowerCase().includes("gitpod")){
-          $.console.logSuccess("This is a GitPod enviroment.");
-          return
+        /**
+         * The action that will be executed when command is run.
+         */
+        action: ({ $ }) => {
+            $.console.logInfo(`Hello from command file: ${filename}`);
         }
-      }
+    },
 
-      $.console.logError("No GitPod enviroment found!!");
-      $.console.spacing();
+    sample2: {
+        description: "Example command from file with arguments",
+
+        /**
+         * Command Arguments
+         *
+         * This will show in the commands list.
+         * `true` means the argument is required.
+         * `false` means the argument is optional.
+         *
+         * The args property is an Array not an Object.
+         * The keys are used to show the arguments in the commands list.
+         * The order of the keys should be the same as the order of the arguments.
+         */
+        args: { name: true },
+        action: ({ args, $ }) => {
+            $.console.logInfo(`Hello ${args[0]} from command file: ${filename}`);
+        }
     }
-  }
 });

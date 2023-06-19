@@ -3,10 +3,12 @@
     "version": "1.0.0",
     "description": "Xpresser Esm Sample",
     "type": "module",
+    "main": "index.ts",
     "scripts": {
-        "dev": "npx nodemon index.ts",
+        "dev": "npx nodemon index.ts server",
         "start": "npx ts-node-esm index.ts",
         "build": "npx tsc",
+        "watch": "npx tsc -w",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
