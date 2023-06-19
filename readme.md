@@ -9,3 +9,6 @@ Only **Cli Module** is registered for now
 - clone this repo
 - run `npm install` to install dependencies
 - run `npx ts-node-esm index.ts cli` to run the cli module.
+
+OR 
+- run `bash xts cli` to run the cli module.
