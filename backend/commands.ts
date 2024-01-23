@@ -9,7 +9,7 @@ const filename = __filename(import.meta.url);
  * `value` is the command options.
  */
 export default defineCommands({
-    sample1: {
+    foo: {
         /**
          * Description of command
          * This will show in the commands list.
@@ -24,7 +24,7 @@ export default defineCommands({
         }
     },
 
-    sample2: {
+    bar: {
         description: "Example command from file with arguments",
 
         /**

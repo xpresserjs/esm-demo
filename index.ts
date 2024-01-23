@@ -1,32 +1,20 @@
 import { __dirname, CliEngine, init } from "@xpresser/framework";
-import { InitializeExpress } from "@xpresser/express-module";
+import { initializeServer } from "./backend/server.js";
 
 // Initialize xpresser
 const $ = await init({
-    name: "Xpresser ESM",
+    name: "Xpresser ESM Typescript Demo",
     env: "development",
+    server: { port: 2000 },
     paths: {
         // Set the root path to the current directory
         base: __dirname(import.meta.url)
     }
 });
 
+
 // Initialize Express Server module
-const server = await InitializeExpress($);
-
-/**
- * Register Routes once express is initialized.
- * server.app is only available on or after the `expressInit` event.
- */
-$.on.expressInit$(function RegisterRoutes() {
-    const { app } = server;
-
-    // Register a route like you would in express.
-    // No xpresser controller support yet.
-    app.get("/", (_, res) => {
-        res.send("Hello World!");
-    });
-});
+await initializeServer($);
 
 /**
  * Register Commands Demo
