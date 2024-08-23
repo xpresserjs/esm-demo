@@ -12,18 +12,18 @@ export async function initializeServer($: Xpresser) {
     await routes($, server);
 }
 
-async function routes($: Xpresser, provider: ExpressProvider) {
+async function routes($: Xpresser, ep: ExpressProvider) {
     /**
      * Register Routes once express is initialized.
      * server.app is only available on or after the `expressInit` event.
      */
     $.on.expressInit$(function RegisterRoutes() {
-        const { app } = provider;
+        const { app } = ep;
 
         // Register a route like you would in express.
         // No xpresser controller support yet.
         app.get("/", (_, res) => {
-            res.send("Hello World!");
+            res.send("Hello World!!");
         });
     });
 }

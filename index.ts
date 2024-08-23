@@ -12,7 +12,6 @@ const $ = await init({
     }
 });
 
-
 // Initialize Express Server module
 await initializeServer($);
 
@@ -20,7 +19,7 @@ await initializeServer($);
  * Register Commands Demo
  * This is a demo of how to register commands.
  * You can add a command from a command file or a command function.
- * running `npx ts-node-esm index.ts cli` will show you the commands.
+ * running `npx tsx index.ts cli` will show you the commands.
  */
 $.on.consoleInit$(async function RegisterCommands() {
     // Get the cli engine

@@ -1,3 +1,4 @@
 {
-    "namespace": "test-plugin"
+    "namespace": "test-plugin",
+    "use_index": "./index.ts"
 }
