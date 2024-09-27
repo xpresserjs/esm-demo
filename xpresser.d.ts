@@ -1,4 +1,4 @@
 // Import Console Module
 import "@xpresser/framework/modules/console/ConsoleModule";
-// Import Server Module
+// Import Express Module
 import "@xpresser/express-module/xpresser.d.ts";
