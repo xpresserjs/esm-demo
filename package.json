@@ -5,10 +5,12 @@
     "type": "module",
     "main": "index.ts",
     "scripts": {
-        "dev": "npx tsx watch index.ts server",
-        "start": "npx tsx index.ts",
-        "build": "npx tsc",
-        "watch": "npx tsc -w",
+        "example:basic": "npx tsx watch examples/basic.ts",
+        "example:cli": "npx tsx watch examples/cli.ts",
+        "example:express-http-server": "npx tsx watch examples/express-http-server.ts",
+        "example:node-http-server": "npx tsx watch examples/node-http-server.ts",
+        "example:plugin": "npx tsx watch examples/plugin.ts cli",
+        "watch": "npx tsc -w ",
         "type-check": "npx tsc --noEmit",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -17,11 +19,12 @@
     "license": "ISC",
     "dependencies": {
         "@types/express": "^5.0.0",
-        "@xpresser/express-module": "^0.0.18",
-        "@xpresser/framework": "^0.0.37"
+        "@xpresser/express-module": "^0.0.19",
+        "@xpresser/framework": "^0.0.46",
+        "@xpresser/server-module": "0.0.21"
     },
     "devDependencies": {
-        "@types/node": "^22.7.3",
+        "@types/node": "^22.7.4",
         "tsx": "^4.19.1",
         "typescript": "^5.6.2"
     }
