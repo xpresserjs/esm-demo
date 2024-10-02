@@ -1,0 +1,4 @@
+{
+  "namespace": "demo-plugin",
+  "use_index": "./index.ts"
+}
